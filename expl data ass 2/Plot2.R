@@ -1,0 +1,8 @@
+setwd("C:/Users/kate/Documents/datascience/coursera")
+NEI <- readRDS("summarySCC_PM25.rds")
+NEI<-subset(NEI, NEI$fips=="24510")
+data<-rowsum(NEI$Emissions, NEI$year)
+table<-data.frame(c(1999, 2002, 2005, 2008), data[,1])
+png(file="plot2.png")
+plot2<-plot(table[,1], table[,2], type="b", col="blue", main="Total emissions PM2.5 in Baltimore City, Maryland 1999-2008", xlab="Year", ylab="PM2.5 emissions(Tons)")
+dev.off()
